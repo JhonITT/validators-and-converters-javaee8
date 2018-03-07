@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style>
+            .error {
+                color: red;
+            }
+        </style>
+
+    </h:head>
+    <h:body>
+        <h:form>
+
+            <h1>Validators and Converters</h1>
+            <h2>Annotation validator</h2>
+            <h:panelGrid columns="3">
+
+                <h:outputLabel for="isUnsupported" value="isUnsupported:"/>
+                <h:selectBooleanCheckbox id="isUnsupported" value="#{validatorAndConverterBean.isUnsupported}" />
+                <h:message styleClass="error" for="isUnsupported"/>
+
+                <h:outputLabel for="isActive" value="isActive"/>
+                <h:selectBooleanCheckbox id="isActive" value="#{validatorAndConverterBean.isActive}" />
+                <h:message styleClass="error" for="isActive"/>
+
+                <h:outputLabel for="discountMax" value="discountMax: 30.00"/>
+                <h:inputText id="discountMax" value="#{validatorAndConverterBean.discountMax}" />
+                <h:message styleClass="error" for="discountMax"/>
+
+                <h:outputLabel for="discountMin" value="discountMin: 5.00"/>
+                <h:inputText id="discountMin" value="#{validatorAndConverterBean.discountMin}" />
+                <h:message styleClass="error" for="discountMin"/>
+
+                <h:outputLabel for="price" value="price: integer:6 fracion:2"/>
+                <h:inputText id="price" value="#{validatorAndConverterBean.price}" />
+                <h:message styleClass="error" for="price"/>
+
+                <h:outputLabel for="eventDate" value="eventDate: future"/>
+                <h:inputText id="eventDate" value="#{validatorAndConverterBean.eventDate}" >
+                    <f:convertDateTime type="Date"  pattern="dd/MM/yyyy"></f:convertDateTime>
+                </h:inputText>
+                <h:message styleClass="error" for="eventDate"/>
+
+                <h:outputLabel for="birthday" value="birthday: Past NotNull"/>
+                <h:inputText id="birthday" value="#{validatorAndConverterBean.birthday}" >
+                    <f:convertDateTime type="Date"  pattern="dd/MM/yyyy"></f:convertDateTime>
+                </h:inputText>
+                <h:message styleClass="error" for="birthday"/>
+
+                <h:outputLabel for="quantityMax" value="quantityMax: 10"/>
+                <h:inputText id="quantityMax" value="#{validatorAndConverterBean.quantityMax}" />
+                <h:message styleClass="error" for="quantityMax"/>
+
+                <h:outputLabel for="quantityMin" value="quantityMin: 5"/>
+                <h:inputText id="quantityMin" value="#{validatorAndConverterBean.quantityMin}" />
+                <h:message styleClass="error" for="quantityMin"/>
+
+                <h:outputLabel for="quantityMinAndMax" value="quantityMinAndMax: 5"/>
+                <h:inputText id="quantityMinAndMax" value="#{validatorAndConverterBean.quantityMinAndMax}" />
+                <h:message styleClass="error" for="quantityMinAndMax"/>
+
+                <h:outputLabel for="username" value="username: NotBlack"/>
+                <h:inputText id="username" value="#{validatorAndConverterBean.username}" />
+                <h:message styleClass="error" for="username"/>
+
+                <h:outputLabel for="unusedString" value="unusedString: Null"/>
+                <h:inputText id="unusedString" value="#{validatorAndConverterBean.unusedString}" />
+                <h:message styleClass="error" for="unusedString"/>
+
+                <h:outputLabel for="phoneNumber" value="phoneNumber: (###)-###-####"/>
+                <h:inputText id="phoneNumber" value="#{validatorAndConverterBean.phoneNumber}" />
+                <h:message styleClass="error" for="phoneNumber"/>
+
+                <h:outputLabel for="briefMessage" value="briefMessage: 2 - 240"/>
+                <h:inputTextarea id="briefMessage" value="#{validatorAndConverterBean.briefMessage}" />
+                <h:message styleClass="error" for="briefMessage"/>
+
+
+                <h:commandButton value="Verificar" action="#{validatorAndConverterBean.action()}"/>
+
+            </h:panelGrid>
+        </h:form>
+        <h2>Custom validators and converters</h2>
+        <h:form>
+            <h:panelGrid columns="3">
+
+                <h:outputLabel for="person" value="Person: "/>
+                <h:inputText id="person" value="#{validatorAndConverterBean.person}" validator="#{personValidator.validate}" converter="#{personConverter}" />
+                <h:message styleClass="error" for="person"/>
+                
+                <h:commandButton value="Verificar" action="#{validatorAndConverterBean.action2()}"/>
+
+            </h:panelGrid>
+
+        </h:form>
+    </h:body>
+</html>
+
