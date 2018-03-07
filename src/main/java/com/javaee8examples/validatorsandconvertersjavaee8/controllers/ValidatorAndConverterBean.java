@@ -8,6 +8,7 @@ package com.javaee8examples.validatorsandconvertersjavaee8.controllers;
 import com.javaee8examples.validatorsandconvertersjavaee8.models.Person;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -79,6 +80,10 @@ public class ValidatorAndConverterBean implements Serializable {
 
     @Size(min = 2, max = 240)
     String briefMessage;
+    
+    @NotNull
+    LocalDate localDate;
+    
     
     Person person;
 
@@ -219,6 +224,16 @@ public class ValidatorAndConverterBean implements Serializable {
     public void setPerson(Person person) {
         this.person = person;
     }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    
     
     
     

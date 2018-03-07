@@ -50,6 +50,12 @@
                     <f:convertDateTime type="Date"  pattern="dd/MM/yyyy"></f:convertDateTime>
                 </h:inputText>
                 <h:message styleClass="error" for="birthday"/>
+                
+                <h:outputLabel for="localDate" value="localDate: NotNull"/>
+                <h:inputText id="localDate" value="#{validatorAndConverterBean.localDate}" >
+                    <f:convertDateTime type="localDate"  pattern="dd/MM/yyyy"></f:convertDateTime>
+                </h:inputText>
+                <h:message styleClass="error" for="localDate"/>
 
                 <h:outputLabel for="quantityMax" value="quantityMax: 10"/>
                 <h:inputText id="quantityMax" value="#{validatorAndConverterBean.quantityMax}" />
